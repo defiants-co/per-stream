@@ -1,6 +1,6 @@
 [tool.pyright]
 venvPath = '.'
-venv = '.venv'
+venv = 'venv'
 
 [build-system]
 requires = ["setuptools>=40.6.0", "wheel"]
