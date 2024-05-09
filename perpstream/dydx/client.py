@@ -16,3 +16,6 @@ class DydxClient(BaseClient):
             return return_positions_from_call(response)
         except RequestError as e:
             raise e
+
+    def name(self) -> str:
+        return "dydx-v4"

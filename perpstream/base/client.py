@@ -42,6 +42,9 @@ class BaseClient:
         self.url = url
         self.auth_token = auth_token
 
+    def name(self) -> str:
+        return "base_client"
+
     def _request(
         self,
         params: Optional[Dict[str, Any]] = None,
@@ -102,7 +105,7 @@ class BaseClient:
         self, user_id: str,
         time_wait_seconds: float,
         debug: bool,
-        callback: Callable[[List[Position], List[Position]], None],
+        callback: Callable[[List[Position], List[Position], str, str], None],
 
     ):
         """
@@ -112,8 +115,8 @@ class BaseClient:
             user_id (str): The ID of the user whose positions are to be polled.
             time_wait_seconds (float): The time interval, in seconds, between polls.
             debug (bool): If True, additional debug information will be printed.
-            callback (Callable[[List[Position], List[Position]]]): A callback function that takes two arguments:
-                a list of new positions and a list of old positions.
+            callback (Callable[[List[Position], List[Position], str, str]]): A callback function that takes two arguments:
+                a list of new positions and a list of old positions, as well as the user_id and data source
         """
         count = 0
         if debug: print("starting stream")
@@ -138,7 +141,7 @@ class BaseClient:
                     if debug:
                         print("detected change, calling callback")
 
-                    callback(last_positions, new_positions)
+                    callback(last_positions, new_positions, user_id, self.name())
 
                     if debug:
                         print("called callback")

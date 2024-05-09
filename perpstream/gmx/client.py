@@ -36,7 +36,13 @@ class GmxClient(BaseClient):
             else:
                 raise RequestError(0, e.__str__())
 
+    def name(self) -> str:
+        return "gmx"
+
 class GmxArbitrumClient(GmxClient):
 
     def __init__(self, url: str = ARBITRUM_RPC_URL, auth_token: str | None = ""):
         super().__init__(url, auth_token, chain="arbitrum")
+
+    def name(self) -> str:
+        return "gmx-arbitrum"
