@@ -66,7 +66,7 @@ class Position:
             self.leverage_amount == other.leverage_amount and
             self.collateral_token == other.collateral_token and
             self.collateral_amount == other.collateral_amount and
-            abs(self.entry_price - other.entry_price) > (0.01 * self.entry_price) and
+            abs(self.entry_price - other.entry_price) < (0.01 * self.entry_price) and
             self.is_long == other.is_long
 
         )
