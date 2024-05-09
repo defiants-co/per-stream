@@ -13,8 +13,8 @@ description = "A python client for polling and fetching actions on the multiple 
 authors = [{ name = "defiants-co", email = "amrith@creda.io" }]
 dependencies = [
     "gmx_python_sdk @ git+https://github.com/defiants-co/gmx_python_sdk.git@main",
-    "requests = *",
-    ""
+    "requests",
+    "web3",
 ]
 
 [tool.poetry]
