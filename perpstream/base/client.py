@@ -140,9 +140,10 @@ class BaseClient:
                 if not verify_position_sets_are_equal(last_positions, new_positions):
                     if debug:
                         print("detected change, calling callback")
-
-                    callback(last_positions, new_positions, user_id, self.name())
-
+                    try:
+                        callback(last_positions, new_positions, user_id, self.name())
+                    except Exception as e:
+                        if debug: print('callback failed with: ' + str(e))
                     if debug:
                         print("called callback")
 
