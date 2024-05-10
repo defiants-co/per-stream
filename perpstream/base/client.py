@@ -165,5 +165,5 @@ class BaseClient:
 
             end = datetime.datetime.now()
             if debug:
-                print(f"round {count} - took {(end-start).total_seconds()} sec")
+                print(f"({user_id[0:10]}...) round {count} - took {(end-start).total_seconds()} sec")
             if time_wait_seconds : sleep(time_wait_seconds)

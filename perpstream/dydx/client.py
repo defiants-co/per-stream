@@ -19,3 +19,6 @@ class DydxClient(BaseClient):
 
     def name(self) -> str:
         return "dydx-v4"
+
+    # def poll_positions(self, user_id: str, callback: Callable[[List[Position], List[Position], str, str], None], init_with_callback: bool = False, time_wait_seconds: float = 0, debug: bool = False):
+        # TODO: add websocket support to override polling
