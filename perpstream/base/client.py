@@ -135,7 +135,7 @@ class BaseClient:
 
         if init_with_callback:
             try:
-                callback(last_positions, [], user_id, self.name())
+                callback(last_positions, last_positions, user_id, self.name())
             except Exception as e:
                 if debug: print('initial callback failed with: ' + str(e))
 
