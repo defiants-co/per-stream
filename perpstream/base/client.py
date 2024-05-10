@@ -103,9 +103,10 @@ class BaseClient:
 
     def poll_positions(
         self, user_id: str,
-        time_wait_seconds: float,
-        debug: bool,
         callback: Callable[[List[Position], List[Position], str, str], None],
+        init_with_callback : bool = False,
+        time_wait_seconds: float = 0,
+        debug: bool = False,
 
     ):
         """
@@ -131,6 +132,13 @@ class BaseClient:
             except RequestError:
                 if debug:
                     print('failed to fetch the data, trying again')
+
+        if init_with_callback:
+            try:
+                callback(last_positions, [], user_id, self.name())
+            except Exception as e:
+                if debug: print('initial callback failed with: ' + str(e))
+
 
         while True:
             start = datetime.datetime.now()
