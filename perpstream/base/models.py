@@ -67,7 +67,8 @@ class Position:
             self.collateral_token == other.collateral_token and
             self.collateral_amount == other.collateral_amount and
             abs(self.entry_price - other.entry_price) < (0.01 * self.entry_price) and
-            self.is_long == other.is_long
+            self.is_long == other.is_long and
+            abs(self.size - other.size) < (0.01 * self.size)
 
         )
 
